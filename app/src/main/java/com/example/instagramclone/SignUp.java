@@ -36,7 +36,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Boxer class saved successfully", Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        } );
 
        /* ParseObject kickBoxer = new ParseObject("KickBoxer");
         kickBoxer.put("punch_speed",100);
