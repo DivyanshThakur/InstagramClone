@@ -4,53 +4,58 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-    public TextView txtHelloWorld;
+    private Button btnSubmit;
+    private EditText edtName, edtPunchPower, edtPunchSpeed, edtKickPower, edtKickSpeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        txtHelloWorld = findViewById(R.id.txtHelloWorld);
+        btnSubmit = findViewById(R.id.btnSubmit);
+        edtName = findViewById(R.id.edtName);
+        edtPunchPower = findViewById(R.id.edtPunchPower);
+        edtPunchSpeed = findViewById(R.id.edtPunchSpeed);
+        edtKickPower = findViewById(R.id.edtKickPower);
+        edtKickSpeed = findViewById(R.id.edtKickSpeed);
 
+        btnSubmit.setOnClickListener(SignUp.this);
 
     }
 
-    public void txt(View view) {
-        ParseObject boxer = new ParseObject("Boxer");
-        boxer.put("punch_speed",200);
+    @Override
+    public void onClick(View view) {
+        try {
+            final ParseObject kickBoxer = new ParseObject("KickBoxer");
+            kickBoxer.put("name", edtName.getText().toString());
+            kickBoxer.put("punch speed", Integer.parseInt(edtPunchSpeed.getText().toString()));
+            kickBoxer.put("punch power",  Integer.parseInt(edtPunchPower.getText().toString()));
+            kickBoxer.put("kick speed",  Integer.parseInt(edtKickSpeed.getText().toString()));
+            kickBoxer.put("kick power",  Integer.parseInt(edtKickPower.getText().toString()));
 
-        boxer.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-                    Toast.makeText(SignUp.this, "Boxer class saved successfully", Toast.LENGTH_LONG).show();
+            kickBoxer.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Toast.makeText(SignUp.this, kickBoxer.get("name").toString(),Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        } );
-
-       /* ParseObject kickBoxer = new ParseObject("KickBoxer");
-        kickBoxer.put("punch_speed",100);
-        kickBoxer.put("punch_power",150);
-        kickBoxer.put("kick_speed",300);
-        kickBoxer.put("kick_power",500);
-
-        kickBoxer.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e==null) {
-                    Toast.makeText(SignUp.this, "KickBoxer class saved successfully", Toast.LENGTH_LONG).show();
-                }
-            }
-        });*/
+            });
+        } catch (Exception e) {
+            Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
+
 }
