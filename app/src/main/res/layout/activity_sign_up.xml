@@ -4,124 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#AA00FF"
     tools:context=".SignUp">
 
-    <EditText
-        android:id="@+id/edtPunchSpeed"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
-        android:ems="10"
-        android:hint="Enter the punch Speed"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtKickSpeed"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
-        android:ems="10"
-        android:hint="Enter the Kick Speed"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtKickPower"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="424dp"
-        android:ems="10"
-        android:hint="Enter the Kick Power"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtPunchPower"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:ems="10"
-        android:hint="Enter the Punch Power"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:hint="Enter the Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnSubmit"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Submit"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmailSA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtKickPower" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/instagram" />
 
-    <TextView
-        android:id="@+id/txtGetData"
+    <EditText
+        android:id="@+id/edtUsernameSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/edtPasswordSA"
+        app:layout_constraintStart_toStartOf="@+id/edtEmailSA"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmailSA" />
+
+    <EditText
+        android:id="@+id/edtEmailSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="E- mail"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/edtUsernameSA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/edtPasswordSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUpSA"
+        app:layout_constraintStart_toStartOf="@+id/edtUsernameSA"
+        app:layout_constraintTop_toBottomOf="@+id/edtUsernameSA" />
+
+    <Button
+        android:id="@+id/btnSignUpSA"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:background="#04146D"
-        android:text="Get data from server"
+        android:layout_marginBottom="3dp"
+        android:background="#071EA3"
+        android:text="Sign Up"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogInSA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPasswordSA" />
 
     <Button
-        android:id="@+id/btnGetAllData"
+        android:id="@+id/btnLogInSA"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#4BBF02"
-        android:text="Get all data"
+        android:layout_marginBottom="12dp"
+        android:background="#25AF0A"
+        android:text="Log In"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtGetData"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnNextActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Go to next Activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUpSA" />
 </androidx.constraintlayout.widget.ConstraintLayout>
