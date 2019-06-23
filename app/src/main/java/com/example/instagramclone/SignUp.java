@@ -37,17 +37,19 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         try {
             final ParseObject kickBoxer = new ParseObject("KickBoxer");
+
+
             kickBoxer.put("name", edtName.getText().toString());
-            kickBoxer.put("punch speed", Integer.parseInt(edtPunchSpeed.getText().toString()));
-            kickBoxer.put("punch power",  Integer.parseInt(edtPunchPower.getText().toString()));
-            kickBoxer.put("kick speed",  Integer.parseInt(edtKickSpeed.getText().toString()));
-            kickBoxer.put("kick power",  Integer.parseInt(edtKickPower.getText().toString()));
+            kickBoxer.put("punch_speed", Integer.parseInt(edtPunchSpeed.getText().toString()));
+            kickBoxer.put("punch_power",  Integer.parseInt(edtPunchPower.getText().toString()));
+            kickBoxer.put("kick_speed",  Integer.parseInt(edtKickSpeed.getText().toString()));
+            kickBoxer.put("kick_power",  Integer.parseInt(edtKickPower.getText().toString()));
 
             kickBoxer.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
-                        Toast.makeText(SignUp.this, kickBoxer.get("name").toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignUp.this, kickBoxer.get("name").toString()  + " is saved successfully",Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -56,6 +58,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         } catch (Exception e) {
             Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+       // ParseUser.getCurrentUser().logOut();
     }
 
 }
