@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
         setTitle("Sign Up");
 
         if (ParseUser.getCurrentUser() != null) {
-            ParseUser.getCurrentUser().logOut();
+            transitionToSocialMediaActivity();
         }
 
 
@@ -79,6 +79,7 @@ public class SignUp extends AppCompatActivity {
 
                                 Toasty.success(SignUp.this, parseUser.getUsername() + " is Signed Up successfully", Toast.LENGTH_SHORT, true).show();
 
+                                transitionToSocialMediaActivity();
                             } else {
 
                                 Toasty.error(SignUp.this, "There was an Error : " + e.getMessage(), Toast.LENGTH_LONG, true).show();
@@ -113,5 +114,9 @@ public class SignUp extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void transitionToSocialMediaActivity() {
+        Intent intent = new Intent(SignUp.this,SocialMediaActivity.class);
+        startActivity(intent);
     }
 }

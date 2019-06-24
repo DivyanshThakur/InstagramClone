@@ -1,6 +1,7 @@
 package com.example.instagramclone;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -31,7 +32,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
 
         if (ParseUser.getCurrentUser() != null) {
-            ParseUser.getCurrentUser().logOut();
+            transitionToSocialMediaActivity();
         }
 
 
@@ -77,6 +78,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                             if (user != null && e == null) {
                                 Toasty.success(LogIn.this, user.getUsername() + " is Logged In successfully", Toast.LENGTH_SHORT, true).show();
 
+                                transitionToSocialMediaActivity();
                             } else {
                                 Toasty.error(LogIn.this, "There was an Error : " + e.getMessage(), Toast.LENGTH_LONG, true).show();
 
@@ -97,5 +99,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void transitionToSocialMediaActivity() {
+        Intent intent = new Intent(LogIn.this,SocialMediaActivity.class);
+        startActivity(intent);
     }
 }
