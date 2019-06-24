@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AEEA00">
+    android:background="#AEEA00"
+    android:onClick="rootLayoutTapped">
 
     <Button
         android:id="@+id/btnSignUpLA"
@@ -38,8 +39,8 @@
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textColor="#040000"
+        android:textColorHint="#030000"
         app:layout_constraintBottom_toTopOf="@+id/edtPasswordLA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -52,8 +53,8 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textColor="#040000"
+        android:textColorHint="#030000"
         app:layout_constraintBottom_toTopOf="@+id/btnLogInLA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

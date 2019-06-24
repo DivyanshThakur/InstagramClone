@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.hardware.input.InputManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -37,6 +40,17 @@ public class SignUp extends AppCompatActivity {
         edtUsernameSA = findViewById(R.id.edtUsernameSA);
         edtPasswordSA = findViewById(R.id.edtPasswordSA);
 
+        edtPasswordSA.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+                if (i == KeyEvent.KEYCODE_ENTER && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnSignUpSA.callOnClick();
+                }
+                return false;
+            }
+        });
+
         btnSignUpSA = findViewById(R.id.btnSignUpSA);
         btnLogInSA = findViewById(R.id.btnLogInSA);
 
@@ -50,28 +64,32 @@ public class SignUp extends AppCompatActivity {
                 parseUser.setUsername(edtUsernameSA.getText().toString());
                 parseUser.setPassword(edtPasswordSA.getText().toString());
 
-                final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
-                progressDialog.setMessage(" Signing Up " + edtUsernameSA.getText().toString());
-                progressDialog.show();
+                if (edtEmailSA.getText().toString().equals("") || edtUsernameSA.getText().toString().equals("") || edtPasswordSA.getText().toString().equals("")) {
+                    Toasty.info(SignUp.this, "E-mail, Username, Password is required", Toast.LENGTH_LONG, true).show();
+                } else {
 
-                parseUser.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null) {
+                    final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
+                    progressDialog.setMessage(" Signing Up " + edtUsernameSA.getText().toString());
+                    progressDialog.show();
 
-                            Toasty.success(SignUp.this, parseUser.getUsername() + " is Signed Up successfully", Toast.LENGTH_SHORT, true).show();
+                    parseUser.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
 
-                        } else {
+                                Toasty.success(SignUp.this, parseUser.getUsername() + " is Signed Up successfully", Toast.LENGTH_SHORT, true).show();
 
-                            Toasty.error(SignUp.this, "There was an Error : " + e.getMessage(), Toast.LENGTH_LONG, true).show();
+                            } else {
 
+                                Toasty.error(SignUp.this, "There was an Error : " + e.getMessage(), Toast.LENGTH_LONG, true).show();
+
+                            }
+                            progressDialog.dismiss();
                         }
-                        progressDialog.dismiss();
-                    }
-                });
+                    });
 
 
-
+                }
             }
         });
 
@@ -86,5 +104,14 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+    }
+    public void rootLayoutTapped (View view) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
