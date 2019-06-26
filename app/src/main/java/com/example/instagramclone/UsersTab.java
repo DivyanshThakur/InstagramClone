@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -44,6 +45,7 @@ public class UsersTab extends Fragment {
         listView = view.findViewById(R.id.listView);
         arrayList = new ArrayList();
         arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,arrayList);
+        final TextView txtShowUsers = view.findViewById(R.id.txtShowUsers);
 
         final ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
 
@@ -61,6 +63,8 @@ public class UsersTab extends Fragment {
                         }
 
                         listView.setAdapter(arrayAdapter);
+                        txtShowUsers.animate().alpha(0).setDuration(1000);
+                        listView.setVisibility(View.VISIBLE);
                     }
                 }
             }
