@@ -74,10 +74,10 @@ public class ProfileTab extends Fragment {
             edtProfileHobbies.setText(parseUser.get("profileHobbies").toString());
         }
 
-        if (parseUser.get("profileFavouriteSport") == null) {
+        if (parseUser.get("favouriteSport") == null) {
             edtProfileFavSport.setText("");
         } else  {
-            edtProfileFavSport.setText(parseUser.get("profileFavouriteSport").toString());
+            edtProfileFavSport.setText(parseUser.get("favouriteSport").toString());
         }
 
         btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
