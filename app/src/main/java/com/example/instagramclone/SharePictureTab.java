@@ -4,6 +4,7 @@ package com.example.instagramclone;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -23,10 +24,10 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -58,6 +59,7 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_share_picture_tab, container, false);
 
@@ -92,7 +94,7 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
                  } else  {
 
                      ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                     receivedImageBitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
+                     receivedImageBitmap.compress(Bitmap.CompressFormat.JPEG,0,byteArrayOutputStream);
                      byte[] bytes = byteArrayOutputStream.toByteArray();
                      ParseFile parseFile = new ParseFile("image.png", bytes);
                      ParseObject parseObject = new ParseObject("Photo");
@@ -171,4 +173,4 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
             }
         }
     }
-}
+    }
