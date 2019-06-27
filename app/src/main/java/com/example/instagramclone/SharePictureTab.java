@@ -96,14 +96,21 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
                      ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                      receivedImageBitmap.compress(Bitmap.CompressFormat.JPEG,0,byteArrayOutputStream);
                      byte[] bytes = byteArrayOutputStream.toByteArray();
+
+
                      ParseFile parseFile = new ParseFile("image.png", bytes);
                      ParseObject parseObject = new ParseObject("Photo");
                      parseObject.put("picture", parseFile);
                      parseObject.put("image_des", edtDescription.getText().toString());
                      parseObject.put("username", ParseUser.getCurrentUser().getUsername());
+
+
                      final ProgressDialog dialog = new ProgressDialog(getContext());
                      dialog.setMessage("Loading...");
+
                      dialog.show();
+
+
                      parseObject.saveInBackground(new SaveCallback() {
                          @Override
                          public void done(ParseException e) {
