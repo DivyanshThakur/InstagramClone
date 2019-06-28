@@ -61,6 +61,8 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignUpLA:
+                Intent intent = new Intent(LogIn.this,SignUp.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.btnLogInLA:
